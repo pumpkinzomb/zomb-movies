@@ -2,9 +2,10 @@
 
 ## Description
 
-graphQL을 이용한 영화정보 열람 서비스.
+graphQL을 이용한 영화정보 열람 서비스.  
+server에서는 graphql-yoga를 사용하다가 heroku build시 port문제로 express-graphql로 변경하였다.
 
-**server**: express, graphql-yoga  
+**server**: express, <del>graphql-yoga</del> express-graphql  
 **client**: react, react-apollo
 
 ## Deploy
