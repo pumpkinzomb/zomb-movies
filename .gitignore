@@ -12,7 +12,7 @@ coverage/
 build/
 
 # API KEY
-graphql/API_KEY.js
+server/graphql/API_KEY.js
 
 debug.log
 
