@@ -463,24 +463,29 @@
         .detail-credits {
             clear: both;
             padding-top: 60px;
-            height: 330px;
-            overflow-y: hidden;
-            overflow-x: scroll;
 
-            &::-webkit-scrollbar {
-                height: 7px;
-                background: rgba(0, 0, 0, .7);
-                border-radius: 5px;
+            .detail-credits-wrapper {
+                height: 275px;
+                overflow-y: hidden;
+                overflow-x: scroll;
 
-                @media (max-width: 640px) {
-                    height: .3rem;
+                &::-webkit-scrollbar {
+                    height: 7px;
+                    background: rgba(14, 10, 10, 0.7);
+                    border-radius: 5px;
+
+                    @media (max-width: 640px) {
+                        height: .3rem;
+                    }
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: rgba(255, 255, 255, .7);
+                    border-radius: 5px;
                 }
             }
 
-            &::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, .7);
-                border-radius: 5px;
-            }
+
 
             h3 {
 
@@ -572,27 +577,27 @@
         .detail-recommendMovies {
 
             padding-top: 60px;
-            height: 420px;
-            overflow-y: hidden;
-            overflow-x: scroll;
 
-            &::-webkit-scrollbar {
-                height: 7px;
-                background: rgba(0, 0, 0, .7);
-                border-radius: 5px;
 
-                @media (max-width: 640px) {
-                    height: .3rem;
+            .detail-recommendMovies-wrapper {
+                overflow-y: hidden;
+                overflow-x: scroll;
+                height: 360px;
+
+                &::-webkit-scrollbar {
+                    height: 7px;
+                    background: rgba(0, 0, 0, .7);
+                    border-radius: 5px;
+
+                    @media (max-width: 640px) {
+                        height: .3rem;
+                    }
                 }
-            }
 
-            &::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, .7);
-                border-radius: 5px;
-            }
-
-            @media (max-width: 640px) {
-                height: 410px;
+                &::-webkit-scrollbar-thumb {
+                    background: rgba(255, 255, 255, .7);
+                    border-radius: 5px;
+                }
             }
 
             h3 {

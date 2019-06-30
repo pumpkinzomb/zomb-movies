@@ -16,28 +16,30 @@ const DetailView = ({ detail, recommendations, credits }) => {
           <h3>
             <i className="material-icons">movie</i> 관련 추천 영화
           </h3>
-          <div className="detail-Movies" style={detailMovies}>
-            {movies.map(movie => {
-              return (
-                <div className="Movie" key={movie.id}>
-                  <Link to={`/detail/${movie.id}`}>
-                    <div className="Movie-poster">
-                      <img
-                        src={
-                          movie.poster_path !== null
-                            ? `${IMG_URL}/w500${movie.poster_path}`
-                            : `/imgs/no-poster.png`
-                        }
-                        alt={`${movie.title}`}
-                      />
-                      <div className="Movie-vote">{movie.vote_average}</div>
-                    </div>
-                    <div className="Movie-title">{movie.title}</div>
-                  </Link>
-                  <div className="Movie-genres" />
-                </div>
-              );
-            })}
+          <div className="detail-recommendMovies-wrapper">
+            <div className="detail-Movies" style={detailMovies}>
+              {movies.map(movie => {
+                return (
+                  <div className="Movie" key={movie.id}>
+                    <Link to={`/detail/${movie.id}`}>
+                      <div className="Movie-poster">
+                        <img
+                          src={
+                            movie.poster_path !== null
+                              ? `${IMG_URL}/w500${movie.poster_path}`
+                              : `/imgs/no-poster.png`
+                          }
+                          alt={`${movie.title}`}
+                        />
+                        <div className="Movie-vote">{movie.vote_average}</div>
+                      </div>
+                      <div className="Movie-title">{movie.title}</div>
+                    </Link>
+                    <div className="Movie-genres" />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       );
@@ -57,39 +59,41 @@ const DetailView = ({ detail, recommendations, credits }) => {
         <h3>
           <i className="material-icons">recent_actors</i>감독 및 출연진
         </h3>
-        <div className="credits-list" style={creditsWidth}>
-          {newCredits.map((item, index) => {
-            return (
-              <div className="credits-profile" key={index}>
-                <div className="profile-pic">
-                  {item.profile_path !== null ? (
-                    <img
-                      src={`${IMG_URL}/w300${item.profile_path}`}
-                      alt={`${item.name}`}
-                    />
-                  ) : (
-                    <img
-                      className="defaultAvatar"
-                      src="/imgs/default-avatar.jpg"
-                      alt={item.name}
-                    />
-                  )}
-                </div>
-                <div className="profile-info">
-                  <span className="profile-charge">
-                    {index === 0 ? (
-                      "감독"
+        <div className="detail-credits-wrapper">
+          <div className="credits-list" style={creditsWidth}>
+            {newCredits.map((item, index) => {
+              return (
+                <div className="credits-profile" key={index}>
+                  <div className="profile-pic">
+                    {item.profile_path !== null ? (
+                      <img
+                        src={`${IMG_URL}/w300${item.profile_path}`}
+                        alt={`${item.name}`}
+                      />
                     ) : (
-                      <span>
-                        <span>{item.character}</span> 역
-                      </span>
+                      <img
+                        className="defaultAvatar"
+                        src="/imgs/default-avatar.jpg"
+                        alt={item.name}
+                      />
                     )}
-                  </span>
-                  <span className="profile-name">{item.name}</span>
+                  </div>
+                  <div className="profile-info">
+                    <span className="profile-charge">
+                      {index === 0 ? (
+                        "감독"
+                      ) : (
+                        <span>
+                          <span>{item.character}</span> 역
+                        </span>
+                      )}
+                    </span>
+                    <span className="profile-name">{item.name}</span>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     );
