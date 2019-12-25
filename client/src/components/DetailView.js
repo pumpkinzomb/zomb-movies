@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
-const DetailView = ({ detail, recommendations, credits }) => {
+const DetailView = ({ detail, recommendations, credits, trailers }) => {
   const IMG_URL = "http://image.tmdb.org/t/p";
   const movieBackground = {
     backgroundImage:
@@ -9,6 +10,70 @@ const DetailView = ({ detail, recommendations, credits }) => {
         ? `url(${IMG_URL}/original/${detail.backdrop_path})`
         : ""
   };
+
+  // const movieTrailers = trailers => {
+  //   if (trailers.length > 0) {
+  //     return (
+  //       <div className="movie-trailer">
+  //         <h3>예고편 영상</h3>
+  //         <select>
+  //           {trailers.map(trailer => {
+  //             return <option key={trailer.key}>{trailer.name}</option>;
+  //           })}
+  //         </select>
+  //       </div>
+  //     );
+  //   }
+  // };
+  class MovieTrailers extends Component {
+    constructor(props) {
+      super(props);
+      const options = this.props.trailers.map(trailer => {
+        return {
+          label: trailer.name,
+          value: trailer.key
+        };
+      });
+      this.state = {
+        options,
+        value: options[0]
+      };
+      this.handleSelectChange = this.handleSelectChange.bind(this);
+    }
+    handleSelectChange(selected) {
+      this.setState({ value: selected });
+    }
+    render() {
+      const { options, value } = this.state;
+      return (
+        <div className="movie-trailer">
+          <h3>
+            <i className="material-icons">video_library</i>
+            예고편 영상
+          </h3>
+          <Select
+            onChange={this.handleSelectChange}
+            value={value}
+            options={options}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            // closeMenuOnSelect={false}
+            // menuIsOpen={true}
+          />
+          <div className="trailer-container">
+            <iframe
+              title={`${value.label}`}
+              src={`https://www.youtube.com/embed/${value.value}?rel=0&modestbranding=1`}
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      );
+    }
+  }
+
   const recommendationsMovies = movies => {
     if (movies.length > 0) {
       return (
@@ -165,6 +230,7 @@ const DetailView = ({ detail, recommendations, credits }) => {
           ""
         )}
         <div className="detail-overview">{detail.overview}</div>
+        {trailers.length > 0 ? <MovieTrailers trailers={trailers} /> : ""}
         {creditsList(credits)}
         {recommendationsMovies(recommendations.movies)}
       </div>

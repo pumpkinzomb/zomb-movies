@@ -132,6 +132,17 @@ export const SEARCH_BY_GENRE = gql`
   }
 `;
 
+export const MOVIE_TRAILER = gql`
+  query getMovieTrailers($movieId: Int!) {
+    trailers(movie_id: $movieId) {
+      id
+      key
+      name
+      site
+    }
+  }
+`;
+
 export const MOVIE_DETAIL = gql`
   query getMovieDetails($movieId: Int!) {
     detail(movie_id: $movieId) {
@@ -161,6 +172,12 @@ export const MOVIE_DETAIL = gql`
     #   }
     #   total_pages
     # }
+    trailers(movie_id: $movieId) {
+      id
+      key
+      name
+      site
+    }
     recommendations(movie_id: $movieId, page: 1) {
       movies {
         id

@@ -19,6 +19,7 @@ const Detail = ({
             detail={data.detail}
             recommendations={data.recommendations}
             credits={data.credits}
+            trailers={data.trailers}
           />
         );
       }}

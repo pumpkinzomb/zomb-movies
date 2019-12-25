@@ -11,6 +11,7 @@ type Movie {
   release_date: String
   genre_ids: [Int]
 }
+
 type MovieInfo {
   adult: Boolean
   backdrop_path: String
@@ -32,6 +33,7 @@ type MovieInfo {
   vote_average: Float
   vote_count: Int
 }
+
 type Genre {
   id: Int!
   name: String
@@ -79,6 +81,17 @@ type MoviesList {
   total_pages: Int!
 }
 
+type Trailer {
+  id: String
+  iso_639_1: String
+  iso_3166_1: String
+  key: String
+  name: String
+  site: String
+  size: Int
+  type: String
+}
+
 type Query {
   nowPlaying(page: Int!): MoviesList!
   topRated(page: Int!): MoviesList!
@@ -92,4 +105,5 @@ type Query {
   credits(movie_id: Int!): Credits!
   videos(movie_id: Int!): [Video]
   genreSearch(genre: Int!, page: Int!): MoviesList!
+  trailers(movie_id: Int!): [Trailer]
 }

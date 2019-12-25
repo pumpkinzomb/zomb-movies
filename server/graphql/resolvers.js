@@ -11,13 +11,12 @@ import {
   getGenreMovies,
   getTopRated,
   getUpComing,
-  getPopular
+  getPopular,
+  getTrailer
 } from "./db";
 const resolvers = {
   /*  
-
   // This is for graphql-yoga's resolvers
-
   Query: {
     nowPlaying: (_, { page }) => getNowPlayingMovies(page),
     topRated: (_, { page }) => getTopRatedMovies(page),
@@ -47,7 +46,8 @@ const resolvers = {
   genreSearch: ({ genre, page }) => getGenreMovies(genre, page),
   topRated: ({ page }) => getTopRated(page),
   upComing: ({ page }) => getUpComing(page),
-  popular: ({ page }) => getPopular(page)
+  popular: ({ page }) => getPopular(page),
+  trailers: ({ movie_id }) => getTrailer(movie_id)
 };
 
 export default resolvers;
