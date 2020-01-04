@@ -581,20 +581,12 @@
 
       .credits-profile {
         position: relative;
-        overflow: auto;
-        width: 134px;
+        overflow-y: hidden;
+        width: 150px;
         float: left;
 
-        @media (max-width: 640px) {
-          width: 150px;
-        }
-
         & + .credits-profile {
-          margin-left: 24.5px;
-
-          @media (max-width: 640px) {
-            margin-left: 10px;
-          }
+          margin-left: 10px;
         }
 
         .profile-pic {
@@ -700,7 +692,7 @@
         float: left;
         text-align: center;
         position: relative;
-        overflow: auto;
+        overflow-y: hidden;
 
         &:hover {
           .Movie-vote {
